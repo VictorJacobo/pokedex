@@ -104,7 +104,7 @@ th, td {
   bottom: 0;
   left:0;
   right:0;
-  height: calc(1em + 18vw);
+  height: calc(1em + 20vw);
 }
 
 .badge {
