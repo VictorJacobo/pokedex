@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" href="img/pokeball.png">
+    <title>Pokedex</title>
+</head>
+<body>
+	<header class="header">
+		<nav class="nav">
+			<img src="img/logo.png" class="logo">
+		</nav>
+	</header>
+
+
+	<div id="inicio" style="padding: 2vw 0 0;">
+		<div class="container" style="padding: 0 0 2vw;">
+			<div class="card">
+    			<div class="card-head" style="padding: 2vw 10vw 0 10vw">
+    				<h1 class="title title-resp">¡Bienvenido a mi pokedex!</h1>
+    			</div>
+    			<div class="card-body" style="padding: 0 10vw 2vw 10vw">
+      				<div style="margin-left: 20px;margin-right: 20px; margin-bottom: 20px">
+      					<hr>
+						<p class="p text-resp">Esto es una prueba, asi que por el momento solo se tiene a los de la primera generacion.</p>
+						<p class="p text-resp">Espero le guste :)</p>
+						<p class="p text-resp">Ingrese el nombre de su pokemon: </p>
+						<div class="centrar" style="padding: 2vw 0 0;">
+							<div style="padding: 0 15px 0 0">
+								<input type="text" id="poke-1" class="text-b-resp" placeholder="Ej. pikachu" >
+							</div>
+							<button type="button" onclick="getName('poke-1')" class="boton text-b-resp" id="name-a">Buscar</button>
+						</div>
+						<p class="p text-resp">O ingrese el ID: </p>
+						<div class="centrar" style="padding: 2vw 0 3vw 0;">
+							<div style="padding: 0 15px 0 0">
+								<input type="text" id="pokeID-1" class="text-b-resp" placeholder="Ej. 25" onkeyup="this.value=Numeros(this.value)">
+							</div>
+							<button type="button" onclick="getName('pokeID-1')" class="boton text-b-resp" id="ID-a">Buscar</button>
+						</div>
+						<div class="centrar">
+							<button type="button" onclick="getRandom()" class="boton text-b-resp" id="random-a">Random</button>
+						</div>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+	</div>
+
+
+	<div  id="conten">
+		<div style="position: relative;">
+			<div style="position: absolute; left: 0;top: 60%">
+				<button type="button" onclick="izquierda()" class="arrow text-b-resp"><</button>
+			</div>
+			<div style="position: absolute;right: 0; top: 60%">
+				<button type="button" onclick="derecha()" class="arrow text-b-resp">></button>
+			</div>
+			<div id="tarjeta"></div>
+		</div>
+		
+		<div style="padding: 7vw 0 7vw;">
+			<div class="container" style="padding: 0 0 2vw;">
+				<div class="card">
+    				<div class="card-head" style="padding: 2vw 10vw 0 10vw">
+    					<p class="name text-resp">Nueva Busqueda</p>
+    				</div>
+    				<div class="card-body">
+      					<div style="margin-left: 20px;margin-right: 20px; margin-bottom: 20px">
+      						<hr>
+							<p class="p text-resp">Ingrese el nombre de su pokemon: </p>
+							<div class="centrar" style="padding: 2vw 0 0;">
+								<div style="padding: 0 15px 0 0">
+									<input type="text" id="poke-2" class="text-b-resp" placeholder="Ej. pikachu" >
+								</div>
+								<button type="button" onclick="getName('poke-2')" class="boton text-b-resp" id="name-b">Buscar</button>
+							</div>
+							<p class="p text-resp">O ingrese el ID: </p>
+							<div class="centrar" style="padding: 2vw 0 3vw 0;">
+								<div style="padding: 0 15px 0 0">
+									<input type="text" id="pokeID-2" class="text-b-resp" placeholder="Ej. 25" onkeyup="this.value=Numeros(this.value)">
+								</div>
+								<button type="button" onclick="getName('pokeID-2')" class="boton text-b-resp" id="ID-b">Buscar</button>
+							</div>
+							<div class="centrar">
+								<button type="button" onclick="getRandom()" class="boton text-b-resp" id="random-b">Random</button>
+							</div>
+      					</div>
+    				</div>
+  				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+	<div id="error" style="padding: 2vw 0 0;">
+		<div class="container" style="padding: 0 0 2vw;">
+			<div class="card">
+    			<div class="card-head" style="padding: 2vw 10vw 0 10vw">
+    				<h1 class="title title-resp">Pokemon no encontrado :(</h1>
+    			</div>
+    			<div class="card-body" style="padding: 0 10vw 2vw 10vw">
+      				<div style="margin-left: 20px;margin-right: 20px; margin-bottom: 20px">
+      					<hr>
+						<p class="p text-resp">El pokemon que usted busca no ha sido encontrado.</p>
+						<p class="p text-resp">Escriba correctamente el nombre o el ID.</p>
+						<p class="p text-resp">Tambien es posible que aun no haya sido añadido a esta pokedex.</p>
+						<p class="p text-resp">Ingrese el nombre de su pokemon: </p>
+						<div class="centrar" style="padding: 2vw 0 0;">
+							<div style="padding: 0 15px 0 0">
+								<input type="text" id="poke-3" class="text-b-resp" placeholder="Ej. pikachu" >
+							</div>
+							<button type="button" onclick="getName('poke-3')" class="boton text-b-resp" id="name-c">Buscar</button>
+						</div>
+						<p class="p text-resp">O ingrese el ID: </p>
+						<div class="centrar" style="padding: 2vw 0 3vw 0;">
+							<div style="padding: 0 15px 0 0">
+								<input type="text" id="pokeID-3" class="text-b-resp" placeholder="Ej. 25" onkeyup="this.value=Numeros(this.value)">
+							</div>
+							<button type="button" onclick="getName('pokeID-3')" class="boton text-b-resp" id="ID-c">Buscar</button>
+						</div>
+						<div class="centrar">
+							<button type="button" onclick="getRandom()" class="boton text-b-resp" id="random-a">Random</button>
+						</div>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+	</div>
+
+	<template id="template-card">
+		<div style="padding: 20vw 0 0;">
+			<div class="container">
+				<div class="card">
+    				<div class="card-head" style="height: 50px">
+    					<img src="img/pikachu.gif" class="poke-img" id="img-poke">
+    				</div>
+    				<div class="card-body">
+    					<div>
+    						<p class="name title-resp" id="nombre"></p>
+    	  					<p class="atributo text-resp" id="IDpoke"></p>
+    	  					<p class="p text-resp" id="descrip"></p>
+    		  				<table style="padding: 3vw 0 0;">
+    		  					<tr>
+    		  						<td>
+    		  							<p class="name text-resp" id="tipo"></p>
+    		  							<p class="atributo text-b-resp">Tipo</p> 
+    		  						</td>
+    	 							<td>
+   		 								<p class="name text-resp" id="peso"></p>
+   		  								<p class="atributo text-b-resp">Peso</p> 
+    		  						</td>
+    		  						<td>
+    		  							<p class="name text-resp" id="altura"></p>
+    		  							<p class="atributo text-b-resp">Altura</p> 
+    	  							</td>
+    	  						</tr>
+    	  					</table>
+    	  					<table style="padding: 3vw 0 0;">
+    	  						<tr>
+    	  							<td>
+    	  								<p class="name text-resp" id="ataque"></p>
+    	  								<p class="atributo text-b-resp">Ataque</p> 
+    	  							</td>
+    	  							<td>
+    	  								<p class="name text-resp" id="defensa"></p>
+    	  								<p class="atributo text-b-resp">Defensa</p> 
+    	  							</td>
+    	  							<td>
+    	  								<p class="name text-resp" id="especial"></p>
+    	  								<p class="atributo text-b-resp">Habilidad</p> 
+    	  							</td>
+    	  						</tr>
+    	  					</table>
+    					</div>
+    				</div>
+  				</div>
+			</div>
+		</div>
+	</template>
+
+	<footer class="footer">
+    	<div class="legal">
+    		<p class="text-b-resp" style="text-align: center; color: white;">&copy;2016-2022 Pokémon. &copy;1995-2022 Nintendo/Creatures Inc./GAME FREAK inc. TM, ® y los nombres de los personajes son marcas de Nintendo.</p>
+    	</div>
+	</footer>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
