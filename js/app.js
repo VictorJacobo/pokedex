@@ -176,6 +176,10 @@ function capitalize(word) {
   return word[0].toUpperCase() + word.slice(1);
 }
 
+function under(word) {
+  return word[0].toLowerCase() + word.slice(1);
+}
+
 function color(tipe){
 	switch(tipe){
 		case "grass": document.body.style.background = "rgb(158,211,85)"
@@ -315,7 +319,7 @@ function izquierda() {
 function getName(id) {
 	var pokename = document.getElementById(id).value
 	scroll(0, 0)
-	fetchData(pokename)
+	fetchData(under(pokename))
 	document.getElementById(id).value = ""
 }
 
